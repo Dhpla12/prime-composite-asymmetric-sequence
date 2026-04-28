@@ -43,7 +43,7 @@ For \(n=3,4,5,\dots\):
 | Maximum            | 134     |
 | Standard Deviation | 10.2241 |
 
-No exceptions were found for (3 \le n \le 100000).
+No exceptions were found for (3 $\\le$ n $\\le$ 100000).
 
 ---
 
@@ -71,7 +71,7 @@ Shows empirical distribution of computed values.
 
 ## Possible Questions
 
-* Does (a(n)) exist for every (n \ge 3)?
+* Does (a(n)) exist for every (n $\\ge$ 3)?
 * Is the sequence unbounded?
 * What is the average growth rate?
 * How often does (a(n)=1)?
