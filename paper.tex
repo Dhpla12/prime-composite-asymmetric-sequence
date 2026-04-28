@@ -1,0 +1,187 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{float}
+
+\title{A Technical Note on an Apparently Unlisted Integer Sequence from Asymmetric Prime--Composite Neighborhoods}
+\author{Aradhya Haldikar}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We document an integer sequence defined by a simple asymmetric condition involving prime and composite numbers. For each integer \(n \ge 3\), let \(a(n)\) be the least positive integer \(k\) such that \(n-k\) is prime and \(n+k\) is composite. We provide initial terms, computational results up to \(n=100000\), summary statistics, graphical observations, and open questions. Searches of the On-Line Encyclopedia of Integer Sequences (OEIS) using initial terms returned no exact match at the time of writing.
+\end{abstract}
+
+\section{Introduction}
+
+Many integer sequences arise from local prime behavior, such as prime gaps, nearest-prime distances, or counting functions involving primes in intervals. This note considers a simple asymmetric variant: the smallest symmetric offset from \(n\) for which the left side is prime and the right side is composite.
+
+Although elementary to define, the resulting sequence displays frequent small values together with occasional larger spikes.
+
+\section{Definition}
+
+Let \(\mathbb{P}\) denote the set of prime numbers. For each integer \(n \ge 3\), define
+
+\[
+a(n)=\min \{k \ge 1 : n-k \in \mathbb{P},\; n+k \notin \mathbb{P},\; n+k>1\}.
+\]
+
+Equivalently, \(a(n)\) is the least positive integer \(k\) such that:
+
+\begin{itemize}
+    \item \(n-k\) is prime,
+    \item \(n+k\) is composite.
+\end{itemize}
+
+\section{Initial Terms}
+
+For \(n=3,4,5,\dots\), the sequence begins:
+
+\[
+1,2,3,3,2,1,6,5,4,9,2,1,10,5,4,7,2,1,4,3,4,1,2,7,8,5,6,19,
+\]
+
+\[
+2,1,2,5,4,13,8,1,10,9,4,13,2,1,4,3,4,1,2,7,4,5,10,1,2,9,20,\dots
+\]
+
+\section{Examples}
+
+\subsection*{Example 1: \(n=14\)}
+
+\[
+14-1=13 \text{ is prime}, \qquad 14+1=15 \text{ is composite}.
+\]
+
+Hence:
+
+\[
+a(14)=1.
+\]
+
+\subsection*{Example 2: \(n=30\)}
+
+At \(k=19\),
+
+\[
+30-19=11 \text{ is prime}, \qquad 30+19=49 \text{ is composite}.
+\]
+
+No smaller positive \(k\) satisfies both conditions, so:
+
+\[
+a(30)=19.
+\]
+
+\section{Computational Results}
+
+Direct computation verified that \(a(n)\) exists for all tested integers
+
+\[
+3 \le n \le 100000.
+\]
+
+No exceptions were found in this range.
+
+\subsection*{Summary Statistics}
+
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+Quantity & Value \\
+\midrule
+Mean of \(a(n)\) & 11.0621 \\
+Median of \(a(n)\) & 8 \\
+Minimum of \(a(n)\) & 1 \\
+Maximum of \(a(n)\) & 134 \\
+Standard deviation & 10.2241 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The empirical mean exceeds the median, indicating a right-skewed distribution with many small values and occasional larger spikes.
+
+\section{Graphs}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{Scatterplot.png}
+\caption{Scatter plot of \(a(n)\) for \(3 \le n \le 100000\).}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{Histogram.png}
+\caption{Histogram of computed values of \(a(n)\) up to \(100000\).}
+\end{figure}
+
+\section{Observed Behavior}
+
+Empirically:
+
+\begin{enumerate}
+    \item Small values occur frequently.
+    \item Many even integers satisfy \(a(n)=1\), especially when \(n-1\) is prime and \(n+1\) is composite.
+    \item Larger values occur irregularly.
+    \item The maximum observed value up to \(100000\) is \(134\).
+\end{enumerate}
+
+\section{OEIS Search Note}
+
+An OEIS search using several initial blocks of terms returned no exact match at the time of writing. This does not exclude equivalent formulations already present under a different description.
+
+\section{Algorithm}
+
+A direct algorithm is:
+
+\begin{verbatim}
+for n = 3,4,5,...
+    for k = 1,2,3,...
+        if isPrime(n-k) and isComposite(n+k):
+            output k
+            break
+\end{verbatim}
+
+\section{Code Availability}
+
+Source code, computed data, and manuscript files are available at:
+
+\begin{center}
+\url{https://github.com/Dhpla12/prime-composite-asymmetric-sequence}
+\end{center}
+
+\section{Open Questions}
+
+\begin{enumerate}
+    \item Does \(a(n)\) exist for every integer \(n \ge 3\)?
+    \item Is the sequence unbounded?
+    \item What is the asymptotic average order of \(a(n)\)?
+    \item What proportion of integers satisfy \(a(n)=1\)?
+    \item How are record values related to prime gaps?
+\end{enumerate}
+
+\section{Conclusion}
+
+We documented an apparently unlisted sequence arising from asymmetric prime--composite neighborhoods around integers. The sequence is easy to compute, empirically well-defined for a large tested range, and exhibits nontrivial local variation.
+
+\begin{thebibliography}{9}
+
+\bibitem{hardywright}
+G. H. Hardy and E. M. Wright,
+\textit{An Introduction to the Theory of Numbers},
+Oxford University Press.
+
+\bibitem{oeis}
+The On-Line Encyclopedia of Integer Sequences,
+\url{https://oeis.org}
+
+\end{thebibliography}
+
+\end{document}
