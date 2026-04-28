@@ -5,7 +5,7 @@ An experimental integer sequence defined by the least positive integer \(k\) suc
 - \(n-k\) is prime  
 - \(n+k\) is composite  
 
-for each integer \(n \ge 3\).
+for each integer \(n $\\ge$ 3\).
 
 This repository contains code, computational data, visualizations, and manuscript files related to the sequence.
 
@@ -15,11 +15,11 @@ This repository contains code, computational data, visualizations, and manuscrip
 
 Let \(a(n)\) denote the least positive integer \(k\) satisfying:
 
-\[
+$$
 a(n)=\min \{k \ge 1 : n-k \text{ is prime and } n+k \text{ is composite}\}
-\]
+$$
 
-for all integers \(n \ge 3\).
+for all integers \(n $\\ge$ 3\).
 
 ---
 
